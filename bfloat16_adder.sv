@@ -19,7 +19,7 @@ always_ff @(posedge clock, negedge nreset)
   
 always_comb
   begin: COM
-    ready = 1'b0;
+    ready = 1'b0; //when sum is ready, ready = 1;
     exponent_a = a [14:7];
     mantissa_a = {1'b0, 1'b1, a[6:0]};
     exponent_b = b [14:7];
@@ -57,14 +57,23 @@ always_comb
                       end
       add_mantissa: begin
                      if(a[15]^b[15] == 1'b0)
-                       
+                       mantissa_sum = mantissa_a + mantissa_b;
                        next_state = normalize_number;
                      else
                        if(mantissa_a > mantissa_b)
+                         mantissa_sum = mantissa_a - mantissa_b;
+                         next_state = normalize_number;
+                       else if(mantissa_a < mantissa_b)
+                         mantissa_sum = mantissa_b - mantissa_a;
+                         next_state = normalize_number;
+                       else
+                         
                          
           
                     end
-      normalize_number:
+      normalize_number:begin
+                        if(mantissa_sum[7] = 1'b1)
+                          
       check_
                       
      
