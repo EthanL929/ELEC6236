@@ -7,7 +7,7 @@ logic [8:0] mantissa_a, mantissa_b, mantissa_sum; //considering the implicit lea
 logic [31:0] sum32;
 
 
-enum {check_format, check_zero, check_exponent, add_mantissa, normalize, check_over} present_state, next_state;
+enum {check_format, check_zero, check_exponent, add_mantissa, normalize_number, check_over} present_state, next_state;
 
 always_ff @(posedge clock, negedge nreset)
   begin: SEQ
@@ -58,8 +58,9 @@ always_comb
       add_mantissa: begin
                      if(a[15]^b[15] == 1'b0)
                        
+                       next_state = normalize_number;
                     end
-      normalize:
+      normalize_number:
       check_
                       
      
