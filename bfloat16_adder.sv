@@ -59,6 +59,10 @@ always_comb
                      if(a[15]^b[15] == 1'b0)
                        
                        next_state = normalize_number;
+                     else
+                       if(mantissa_a > mantissa_b)
+                         
+          
                     end
       normalize_number:
       check_
