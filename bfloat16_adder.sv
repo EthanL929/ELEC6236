@@ -60,7 +60,7 @@ always_comb
       check_exponent: begin //
         if(exponent_a == exponent_b )
                          exponent_sum = exponent_a;
-                         next_state = add_mantissa; ////////
+                         next_state = add_mantissa; ////////round to nearest mid_a/mid_b
         else if(exponent_a > exponent_b)
                          exponent_b = exponent_b + 1'b1;
                          right_b = mantissa_b[0];
